@@ -1,0 +1,229 @@
+/* ===================================================
+   LevelSelector Component Styles
+   =================================================== */
+
+.level-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 85vh;
+  padding: var(--space-xl);
+  gap: var(--space-2xl);
+}
+
+/* Hero section */
+.level-hero {
+  text-align: center;
+}
+
+.level-hero-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: var(--space-md);
+  animation: logoPulse 3s ease-in-out infinite;
+}
+
+.level-hero-title {
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #a78bfa, #7c3aed, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.level-hero-subtitle {
+  margin-top: var(--space-sm);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* Level cards row */
+.level-cards {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.level-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl) var(--space-2xl);
+  min-width: 200px;
+  cursor: pointer;
+  border: 1.5px solid var(--surface-border);
+  background: var(--surface-glass);
+  transition: all var(--transition-base);
+  font-family: var(--font-family);
+  color: var(--text-primary);
+}
+
+.level-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow:
+    0 0 24px var(--accent-glow),
+    var(--shadow-lg);
+  border-color: var(--accent-primary);
+}
+
+.level-card:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+.level-card-icon {
+  font-size: 2.4rem;
+}
+
+.level-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.level-card-grid {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.level-card-best {
+  display: flex;
+  gap: var(--space-sm);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--warning);
+  margin-top: var(--space-xs);
+}
+
+.level-card-best--empty {
+  color: var(--text-muted);
+}
+
+/* Footer tip */
+.level-footer-tip {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .level-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .level-card {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* ===================================================
+   Stage Grid & Tooltips
+   =================================================== */
+
+.stage-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+  max-width: 600px;
+  margin-top: var(--space-xl);
+}
+
+.stage-btn-container {
+  position: relative; /* Anchor for tooltip */
+}
+
+.stage-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--surface-border);
+  background: var(--surface-glass);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage-btn:hover:not(:disabled) {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.stage-btn--locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Glass-morphic Hover Tooltip */
+.stage-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--surface-overlay);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-fast);
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: var(--shadow-lg);
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.stage-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--surface-border) transparent transparent transparent;
+}
+
+.stage-btn:hover .stage-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.tooltip-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--accent-secondary);
+  border-bottom: 1px solid var(--surface-border);
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.tooltip-stat {
+  font-size: 0.8rem;
+  font-weight: 500;
+}

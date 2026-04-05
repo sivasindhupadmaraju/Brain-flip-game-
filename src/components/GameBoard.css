@@ -1,0 +1,53 @@
+/* ===================================================
+   GameBoard Grid Styles
+   =================================================== */
+
+.gameboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  padding: var(--space-md) 0;
+}
+
+.gameboard-grid {
+  display: grid;
+  gap: var(--space-sm);
+  justify-content: center;
+  align-content: center;
+  padding: var(--space-md);
+}
+
+/* Subtle entrance animation for cards */
+.gameboard-grid .card-wrapper:not(.is-removing):not(.card-placeholder):not(.is-matched) {
+  animation: cardEnter 0.4s ease-out both;
+}
+
+/* Stagger the entrance: each card has a tiny delay via nth-child */
+.gameboard-grid .card-wrapper:nth-child(1)  { animation-delay: 0.02s; }
+.gameboard-grid .card-wrapper:nth-child(2)  { animation-delay: 0.04s; }
+.gameboard-grid .card-wrapper:nth-child(3)  { animation-delay: 0.06s; }
+.gameboard-grid .card-wrapper:nth-child(4)  { animation-delay: 0.08s; }
+.gameboard-grid .card-wrapper:nth-child(5)  { animation-delay: 0.10s; }
+.gameboard-grid .card-wrapper:nth-child(6)  { animation-delay: 0.12s; }
+.gameboard-grid .card-wrapper:nth-child(7)  { animation-delay: 0.14s; }
+.gameboard-grid .card-wrapper:nth-child(8)  { animation-delay: 0.16s; }
+.gameboard-grid .card-wrapper:nth-child(n+9)  { animation-delay: 0.18s; }
+.gameboard-grid .card-wrapper:nth-child(n+17) { animation-delay: 0.24s; }
+.gameboard-grid .card-wrapper:nth-child(n+25) { animation-delay: 0.30s; }
+.gameboard-grid .card-wrapper:nth-child(n+33) { animation-delay: 0.36s; }
+.gameboard-grid .card-wrapper:nth-child(n+41) { animation-delay: 0.42s; }
+.gameboard-grid .card-wrapper:nth-child(n+49) { animation-delay: 0.48s; }
+.gameboard-grid .card-wrapper:nth-child(n+57) { animation-delay: 0.54s; }
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.7) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

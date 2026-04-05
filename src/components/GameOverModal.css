@@ -1,0 +1,134 @@
+/* ===================================================
+   GameOverModal Styles
+   =================================================== */
+
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: var(--space-lg);
+}
+
+/* Modal card */
+.modal-content {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Confetti decoration */
+.modal-confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+}
+
+.confetti-item {
+  font-size: 1.4rem;
+  animation: confettiFall 2s ease-in-out infinite alternate;
+}
+
+.confetti-item:nth-child(1) { animation-delay: 0s; }
+.confetti-item:nth-child(2) { animation-delay: 0.3s; }
+.confetti-item:nth-child(3) { animation-delay: 0.6s; }
+.confetti-item:nth-child(4) { animation-delay: 0.9s; }
+.confetti-item:nth-child(5) { animation-delay: 1.2s; }
+
+@keyframes confettiFall {
+  0%   { transform: translateY(-10px) rotate(0deg); opacity: 0.7; }
+  100% { transform: translateY(8px) rotate(20deg); opacity: 1; }
+}
+
+/* Title */
+.modal-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: var(--space-lg);
+  background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modal-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+}
+
+/* New best badge */
+.modal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.15));
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: #fbbf24;
+  font-weight: 700;
+  font-size: 0.92rem;
+  animation: badgePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.3); }
+  50%      { transform: scale(1.05); box-shadow: 0 0 16px 4px rgba(251, 191, 36, 0.15); }
+}
+
+/* Stats row */
+.modal-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.modal-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.modal-stat-icon {
+  font-size: 1.5rem;
+}
+
+.modal-stat-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.modal-stat-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Actions */
+.modal-actions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  margin-top: var(--space-xl);
+  flex-wrap: wrap;
+}
